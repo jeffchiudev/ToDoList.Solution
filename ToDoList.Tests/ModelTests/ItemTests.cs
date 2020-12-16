@@ -88,7 +88,7 @@ namespace ToDoList.Tests
             string description02 = "Wash dishes";
             Item newItem1 = new Item(description01);
             Item newItem2 = new Item(description02);
-            Item result = new Item("Incorrect item test"); //act
+            Item result = Item.Find(2); //act
             Assert.AreEqual(newItem2, result);
         }
 

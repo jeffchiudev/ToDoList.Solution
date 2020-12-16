@@ -15,6 +15,11 @@ namespace ToDoList.Models
             Id = _instances.Count;
         }
 
+        public static Item Find(int searchId)
+        {
+            return _instances[searchId-1];
+        }
+
         public static List<Item> GetAll()
         {
             return _instances;
