@@ -14,9 +14,16 @@ namespace ToDoList.Controllers
         }
 
         [HttpGet("/items/new")]
-        public ActionResult CreateForm()
+        public ActionResult New()
         {
             return View();
+        }
+
+        [HttpGet("/items/{id}")]
+        public ActionResult Show(int id)
+        {
+            Item foundItem = Item.Find(Id);
+            return View(foundItem);
         }
 
         [HttpPost("/items")]
