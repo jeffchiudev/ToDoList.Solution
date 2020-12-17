@@ -22,7 +22,7 @@ namespace ToDoList.Controllers
         [HttpGet("/items/{id}")]
         public ActionResult Show(int id)
         {
-            Item foundItem = Item.Find(Id);
+            Item foundItem = Item.Find(id);
             return View(foundItem);
         }
 
