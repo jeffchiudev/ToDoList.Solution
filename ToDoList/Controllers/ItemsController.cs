@@ -30,6 +30,13 @@ namespace ToDoList.Controllers
             Item thisItem = _db.Items.FirstOrDefault(items => items.ItemId == id);
             return View(thisItem);
         }
+        [HttpPost]
+        public ActionResult Create(Item item)
+        {
+            _db.Items.Add(item);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Edit(int id)
         {
@@ -45,14 +52,20 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public ActionResult Create(Item item)
+        public ActionResult Delete(int id)
         {
-            _db.Items.Add(item);
+            var thisItem = _db.Items.FirstOrDefault(items => items.ItemId == id);
+            return View(thisItem);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var thisItem = _db.Items.FirstOrDefault(items => items.ItemId == id);
+            _db.Items.Remove(thisItem);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
 
         
     }
